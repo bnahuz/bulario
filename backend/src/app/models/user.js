@@ -20,6 +20,11 @@ const UserSchema = new mongoose.Schema({
         select: false
     },
 
+    sex : {
+        type: String,
+        required: true
+    },
+
     isDoctor: {
         type: Boolean,
         required: true,
