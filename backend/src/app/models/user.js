@@ -25,11 +25,6 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
 
-    isDoctor: {
-        type: Boolean,
-        required: true,
-    },
-
     isActive: {
         type: Boolean,
         required: true,
@@ -38,11 +33,6 @@ const UserSchema = new mongoose.Schema({
     doctorsIDS : {
         type: Array,
         required: false
-    },
-    
-    DoctorCRM: {
-        type: String,
-        required: false,
     },
     
     createdAt:{
