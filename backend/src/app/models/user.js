@@ -34,6 +34,12 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         required: false
     },
+
+    prescriptionIDS : {
+        type: Array,
+        required: false
+
+    },
     
     createdAt:{
         type: Date,

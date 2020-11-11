@@ -34,6 +34,11 @@ const DoctorSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
+    specialty: {
+        type: String,
+        required: true
+    },
     
     createdAt:{
         type: Date,
