@@ -26,11 +26,13 @@ router.patch('/addDoctor', async(req,res) => {
     const { email, doctorEmail } = req.body;
 
     try {
-        const doctor = await Doctor.findOne({ doctorEmail })
-        const doctorID = doctor.id
-        const user = await User.findOne({ email })
-        console.log(doctor)
-        user.updateOne({
+        
+        const doctor = await Doctor.find({ "email": doctorEmail })
+        const doctorID = doctor[0]._id
+        const user = await User.find({ "email": email })
+        console.log(user)
+        
+        user[0].updateOne({
             $push: {
                 "doctorID": doctorID
             }
