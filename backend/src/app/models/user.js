@@ -30,6 +30,16 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
 
+    alergies: {
+        type: String,
+        required: true
+    },
+
+    cronicDesires: {
+        type: String,
+        required: true
+    },
+
     doctorsIDS : {
         type: Array,
         required: false

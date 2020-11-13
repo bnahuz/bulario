@@ -5,6 +5,20 @@ const Doctor = require('../models/Doctor');
 
 const router = express.Router();
 
+router.get('/users', async(req, res) => {
+
+   /* try {
+
+        const user = await User.create(req.body);
+
+        user.password = undefined;
+
+        return res.send({ user });
+    } catch(err) {
+        return res.status(400).send({ error: "Can't get users" })
+    }
+});*/
+
 router.post('/register', async(req, res) => {
     const { email } = req.body;
 
@@ -27,17 +41,20 @@ router.patch('/addDoctor', async(req,res) => {
 
     try {
         
-        const doctor = await Doctor.find({ "email": doctorEmail })
-        const doctorID = doctor[0]._id
-        const user = await User.find({ "email": email })
-        console.log(user)
+        //const doctor = doctorEmail
+        const user = await User.findOne({ "email": email });
+        const userID = user._id;
         
-        user[0].updateOne({
-            $push: {
-                "doctorID": doctorID
+        await User.update(
+            {_id: userID},
+            {
+                $addToSet: {
+                doctorsIDS: doctorEmail
+                }
             }
-        })
-
+        );
+        
+        return res.send({ user });
 
     } catch(err) {
         return res.status(400).send({ error: 'Add Doctor failed' })
