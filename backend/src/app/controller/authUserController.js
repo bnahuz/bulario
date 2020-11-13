@@ -7,17 +7,16 @@ const router = express.Router();
 
 router.get('/users', async(req, res) => {
 
-   /* try {
+    try {
 
-        const user = await User.create(req.body);
+        const users = await User.find();
 
-        user.password = undefined;
-
-        return res.send({ user });
+        return res.send(users);
+        
     } catch(err) {
         return res.status(400).send({ error: "Can't get users" })
     }
-});*/
+});
 
 router.post('/register', async(req, res) => {
     const { email } = req.body;
