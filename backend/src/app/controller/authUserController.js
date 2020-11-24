@@ -1,6 +1,7 @@
 const express = require('express');
 
 const User = require('../models/User');
+const MedicineLeaflet = require('../models/medicine');
 
 const router = express.Router();
 
@@ -38,8 +39,7 @@ router.patch('/addDoctor', async(req,res) => {
     const { email, doctorEmail } = req.body;
 
     try {
-        
-        //const doctor = doctorEmail
+
         const user = await User.findOne({ "email": email });
         const userID = user._id;
         
@@ -58,5 +58,29 @@ router.patch('/addDoctor', async(req,res) => {
         return res.status(400).send({ error: 'Add Doctor failed' })
     }
 });
+
+router.patch("/addLeafleat", async(req,res) => {
+    const { medicineName, userEmail } = req.body;
+
+    try {
+        if(!(await MedicineLeaflet.findOne({ "name": medicineName })))
+            return res.status(400).send({ error: 'Medicine Leaflet do not exists' })
+
+        const user = await User.findOne({ "email": userEmail });
+        const userID = user._id;
+
+        await User.update(
+            {_id: userID},
+            {
+                $addToSet: {
+                    medicineLeaflets: medicineName
+                }
+            }
+        );
+    } catch (err) {
+        return res.status(400).send({ error: 'Add Medicine Leaflet failed' })
+    }
+});
+
 
 module.exports = app => app.use('/authUser', router);

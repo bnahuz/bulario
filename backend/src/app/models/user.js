@@ -50,6 +50,11 @@ const UserSchema = new mongoose.Schema({
         required: false
 
     },
+
+    medicineLeaflets: {
+        type: Array,
+        required: false
+    },
     
     createdAt:{
         type: Date,
