@@ -1,7 +1,7 @@
 const express = require('express');
 
 const User = require('../models/User');
-const MedicineLeaflet = require('../models/medicine');
+ const MedicineLeaflet = require('../models/Medicine');
 
 const router = express.Router();
 
@@ -77,6 +77,9 @@ router.patch("/addLeafleat", async(req,res) => {
                 }
             }
         );
+
+        return res.send({ user });
+
     } catch (err) {
         return res.status(400).send({ error: 'Add Medicine Leaflet failed' })
     }

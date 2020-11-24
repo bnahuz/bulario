@@ -54,7 +54,7 @@ const MedicineLeafletSchema = new mongoose.Schema({
     posology:{
         type: String,
         require: true,
-    },
+    }
 
 });
 
