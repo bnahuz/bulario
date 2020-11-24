@@ -9,5 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 
 require('./app/controller/authUserController')(app);
 require('./app/controller/authDoctorController')(app);
+require('./app/controller/medicineController')(app);
+
 
 app.listen(3000);
