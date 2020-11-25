@@ -1,7 +1,7 @@
 const express = require('express');
 
 const User = require('../models/User');
- const MedicineLeaflet = require('../models/Medicine');
+const MedicineLeaflet = require('../models/Medicine');
 
 const router = express.Router();
 
