@@ -1,14 +1,11 @@
 const express = require('express');
 
 const Prescription = require('../models/Prescription');
-const Doctor = require('../models/Doctor');
-const User = require('../models/User');
 
 
 const router = express.Router();
 
 router.post('/registerPrescription', async(req, res) => {
-    // const { doctorEmail, pacientEmail } = req.body;
 
     try {
 
