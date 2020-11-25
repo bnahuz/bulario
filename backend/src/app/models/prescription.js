@@ -1,14 +1,16 @@
 const mongoose = require('../database/config');
 
 const PrescriptionSchema = new mongoose.Schema({    
-    doctorName:{
+    doctorEmail:{
         type: String,
         require: true,
+        lowercase: true
     },
 
-    pacientName:{
+    pacientEmail:{
         type: String,
         require: true,
+        lowercase: true
     },
 
     observations:{
