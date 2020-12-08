@@ -20,4 +20,15 @@ router.post('/registerMedicine', async(req, res) => {
     }
 });
 
+router.get('/getAll', async(req,res) => {
+    try {
+
+        const medicines = await MedicineLeaflet.find();
+
+        return res.send(medicines);
+    } catch(err) {
+        return res.status(400).send({ error: "Can't get medicines" })
+    }
+});
+
 module.exports = app => app.use('/medicine', router);
