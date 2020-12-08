@@ -21,4 +21,18 @@ router.post('/register', async(req, res) => {
     }
 });
 
+
+router.get('/doctor', async(req, res) => {
+
+    try {
+
+        const doctor = await Doctor.find();
+
+        return res.send(doctor);
+        
+    } catch(err) {
+        return res.status(400).send({ error: "Can't get doctors" })
+    }
+});
+
 module.exports = app => app.use('/authDoctor', router);

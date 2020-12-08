@@ -17,4 +17,15 @@ router.post('/registerAppointment', async(req, res) => {
     }
 });
 
+router.get('/getAppointment', async(req,res) => {
+    try {
+
+        const appointment = await Appointment.find();
+
+        return res.send(appointment);
+    } catch(err) {
+        return res.status(400).send({ error: "Can't get appointment" })
+    }
+});
+
 module.exports = app => app.use('/appointment', router);
